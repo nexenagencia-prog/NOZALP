@@ -143,3 +143,19 @@
  .detail-copy{width:100%;max-width:560px}
 }
 @media(prefers-reduced-motion:reduce){.benefit-card{transition:none}}
+
+
+/* Ajustes de enquadramento: panoramas expandidos, sem placa atrás do logo */
+.brand,.site-footer .brand{background:transparent!important;border-color:transparent!important;filter:drop-shadow(0 1px 3px rgba(0,0,0,.28))}
+.hero-image-wrap picture,.professionals-image picture,.business-image picture,.detail-image picture{position:absolute;inset:0;display:block;width:100%;height:100%;overflow:hidden}
+.hero-image-wrap picture img,.professionals-image picture img,.business-image picture img,.detail-image picture img{display:block;width:100%;height:100%;max-width:none;object-fit:cover}
+.hero-image-wrap picture img{object-position:center center}
+.professionals-image picture img{object-position:center center}
+.business-image picture img{object-position:center center}
+.detail-image picture img{object-position:center center}
+.professionals,.business,.app-detail{min-height:max(590px,min(42.85vw,821px))}
+@media(max-width:700px){
+ .professionals{min-height:650px}
+ .business{min-height:650px}
+ .app-detail{min-height:580px}
+}
