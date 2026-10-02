@@ -42,3 +42,27 @@ form?.addEventListener('submit', (event) => {
   message.textContent = `Obrigado, ${name}. Seu interesse foi registrado nesta demonstração.`;
   form.reset();
 });
+
+\n// Alterna a cobrança e permite levar a escolha do plano ao formulário.
+const billingToggleButtons = document.querySelectorAll('[data-billing]');
+billingToggleButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const isAnnual = button.dataset.billing === 'annual';
+    billingToggleButtons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+    document.querySelectorAll('.plan-price[data-annual]').forEach((price) => {
+      price.querySelector('strong').textContent = isAnnual ? price.dataset.annual : price.dataset.monthly;
+    });
+    document.querySelectorAll('.plan-period[data-annual]').forEach((period) => {
+      period.textContent = isAnnual ? period.dataset.annual : period.dataset.monthly;
+    });
+  });
+});
+document.querySelectorAll('.plan-select').forEach((button) => {
+  button.addEventListener('click', () => {
+    document.querySelectorAll('.plan-select').forEach((item) => item.classList.remove('is-selected'));
+    button.classList.add('is-selected');
+    const interest = document.querySelector('#contact-form select[name="interest"]');
+    if (interest) interest.value = button.dataset.plan;
+    document.querySelector('#contato')?.scrollIntoView({ behavior: 'smooth' });
+  });
+});
