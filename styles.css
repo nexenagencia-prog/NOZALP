@@ -357,3 +357,9 @@
  }
  .app-detail{padding-top:22px!important}
 }
+
+
+/* Desktop: move only the Hero message block away from the laptop image */
+@media(min-width:761px){
+ .hero-copy{left:clamp(-96px,-5vw,-36px)}
+}
