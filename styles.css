@@ -305,3 +305,25 @@
  .professionals-image img{opacity:1!important;filter:brightness(1.12) saturate(1)!important}
  .professionals-image:after{background:linear-gradient(0deg,rgba(10,14,15,.5),rgba(10,14,15,.16) 48%,rgba(10,14,15,0) 86%)!important}
 }
+
+
+/* Ajustes finais de enquadramento mobile */
+@media(max-width:700px){
+ .hero-points{margin-top:62px!important}
+ #profissionais.professionals{
+  align-items:flex-start!important;justify-content:flex-start!important;
+  padding-top:54px!important;padding-bottom:0!important
+ }
+ #profissionais .professionals-copy{
+  position:relative!important;z-index:2!important;width:100%!important;max-width:560px!important;margin-top:0!important
+ }
+ #profissionais .professionals-image:after{
+  background:linear-gradient(180deg,rgba(10,14,15,.34) 0%,rgba(10,14,15,.18) 34%,rgba(10,14,15,.12) 62%,rgba(10,14,15,.52) 100%)!important
+ }
+ #empresas.business{padding-bottom:0!important}
+ #empresas.business>.business-image{
+  height:clamp(280px,78vw,350px)!important;aspect-ratio:auto!important;object-position:center center!important
+ }
+ #empresas.business>.business-image img{object-position:center center!important}
+ .app-detail{padding-top:22px!important}
+}
