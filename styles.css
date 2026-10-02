@@ -233,3 +233,24 @@
  .detail-image{order:1;width:100%;height:clamp(250px,68vw,330px)}
  .footer-tagline{justify-content:flex-start}
 }
+
+
+/* Mobile layout lock: imagens participam do fluxo e ficam entre os blocos pedidos */
+@media(max-width:700px){
+ #plataforma.product{display:flex!important;flex-flow:column nowrap!important;align-items:stretch!important;gap:0!important;min-height:0!important;padding:0!important}
+ #plataforma.product>.product-visual{position:relative!important;inset:auto!important;order:0!important;display:block!important;flex:0 0 auto!important;width:100%!important;height:clamp(280px,78vw,360px)!important;min-height:280px!important;max-height:none!important}
+ #plataforma.product>.product-visual picture{position:absolute!important;inset:0!important;display:block!important;width:100%!important;height:100%!important}
+ #plataforma.product>.product-visual img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;min-height:0!important;max-height:none!important;object-fit:cover!important;object-position:66% center!important;filter:brightness(.92) saturate(.86)!important}
+ #plataforma.product:before{background:linear-gradient(180deg,rgba(16,18,20,.02) 0%,rgba(16,18,20,.05) 72%,#101214 100%)}
+ #plataforma.product>.product-copy{position:relative!important;order:1!important;width:100%!important;max-width:none!important;padding:42px var(--gutter) 68px!important}
+ #empresas.business{display:flex!important;flex-flow:column nowrap!important;align-items:stretch!important;gap:30px!important}
+ #empresas.business>.business-copy{position:relative!important;order:0!important;width:100%!important;max-width:none!important}
+ #empresas.business>.business-image{position:relative!important;order:1!important;align-self:stretch!important;flex:0 0 auto!important;width:100%!important;height:clamp(270px,78vw,350px)!important}
+ #empresas.business>.business-image picture{display:block!important;width:100%!important;height:100%!important}
+ #empresas.business>.business-image img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important}
+ .app-detail{display:flex!important;flex-flow:column nowrap!important;align-items:stretch!important;gap:30px!important}
+ .app-detail>.detail-copy{position:relative!important;order:0!important;width:100%!important;max-width:none!important}
+ .app-detail>.detail-image{position:relative!important;order:1!important;align-self:stretch!important;flex:0 0 auto!important;width:100%!important;height:clamp(250px,68vw,330px)!important}
+ .app-detail>.detail-image picture{display:block!important;width:100%!important;height:100%!important}
+ .app-detail>.detail-image img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important}
+}
