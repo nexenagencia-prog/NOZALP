@@ -363,3 +363,7 @@
 @media(min-width:761px){
  .hero-copy{left:clamp(-96px,-5vw,-36px)}
 }
+
+
+/* Ajusta apenas a posição do logo no cabeçalho */
+.site-header .brand{position:relative;left:clamp(-18px,-1.25vw,-8px)}
