@@ -210,3 +210,8 @@
  .product-visual img{object-position:66% center;filter:brightness(.48) saturate(.78)}
  .product:before{background:linear-gradient(180deg,rgba(16,18,20,.44) 0%,rgba(16,18,20,.58) 48%,rgba(16,18,20,.78) 100%),linear-gradient(90deg,rgba(16,18,20,.24),transparent)}
 }
+
+
+/* Hero ocupa a primeira tela inteira, sem revelar o início da seção seguinte */
+.hero{height:calc(100svh - 78px);min-height:max(760px,calc(100svh - 78px))}
+@media(max-width:700px){.hero{height:auto;min-height:780px}}
