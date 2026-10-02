@@ -159,3 +159,20 @@
  .business{min-height:650px}
  .app-detail{min-height:580px}
 }
+
+
+/* Final interaction refinements */
+.product h2#product-title{max-width:500px;text-wrap:balance}
+.product-copy>p:not(.eyebrow){max-width:470px}
+.hero>.note-one{left:59%;top:54%;right:auto;bottom:auto;z-index:4;width:min(245px,25vw);padding:15px 18px;border-color:rgba(171,221,218,.62);background:rgba(13,26,27,.92);box-shadow:0 22px 60px rgba(0,0,0,.36),0 0 0 1px rgba(170,219,216,.08);font-size:11px;line-height:1.5;backdrop-filter:blur(18px)}
+.hero>.note-one strong{font-size:12px}
+.hero .note-two{z-index:3;top:27%;right:7%;bottom:auto;left:auto}
+.footer-tagline{display:flex;align-items:center;justify-content:center;gap:15px}
+.instagram-mark{width:30px;height:30px;flex:none;display:grid;place-items:center;border:1px solid rgba(166,213,211,.3);border-radius:50%;color:#c5e3e1;transition:color .2s,border-color .2s,transform .2s}
+.instagram-mark svg{width:16px;height:16px}
+.instagram-mark:hover{color:#fff;border-color:rgba(166,213,211,.75);transform:translateY(-2px)}
+@media(max-width:700px){
+ .hero>.note-one{display:none}
+ .hero .note-two{display:none}
+ .footer-tagline{justify-content:flex-start}
+}
