@@ -257,3 +257,22 @@
 
 /* Mantém a composição original do diagnóstico em telas largas */
 @media(min-width:701px){.app-detail>.detail-image{grid-column:1;grid-row:1}.app-detail>.detail-copy{grid-column:2;grid-row:1}}
+
+
+/* Mobile: panorama full-bleed, sem escurecimento, com transição suave nas bordas */
+@media(max-width:700px){
+ #plataforma.product>.product-visual{
+  position:relative!important;inset:auto!important;align-self:center!important;flex:0 0 auto!important;
+  width:100vw!important;max-width:none!important;height:auto!important;min-height:0!important;max-height:none!important;
+  aspect-ratio:1916 / 821!important;margin-left:calc(50% - 50vw)!important;margin-right:calc(50% - 50vw)!important;
+  border:0!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;overflow:hidden!important
+ }
+ #plataforma.product>.product-visual picture{position:absolute!important;inset:0!important;display:block!important;width:100%!important;height:100%!important}
+ #plataforma.product>.product-visual img{
+  position:absolute!important;inset:0!important;display:block!important;width:100%!important;height:100%!important;min-height:0!important;max-height:none!important;
+  object-fit:cover!important;object-position:center center!important;opacity:1!important;filter:brightness(1.1) saturate(.92)!important
+ }
+ #plataforma.product:before{
+  background:linear-gradient(180deg,#101214 0%,rgba(16,18,20,.55) 13%,rgba(16,18,20,0) 34%,rgba(16,18,20,0) 70%,#101214 100%)!important
+ }
+}
