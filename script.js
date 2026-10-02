@@ -43,7 +43,8 @@ form?.addEventListener('submit', (event) => {
   form.reset();
 });
 
-\n// Alterna a cobrança e permite levar a escolha do plano ao formulário.
+
+// Alterna a cobrança e permite levar a escolha do plano ao formulário.
 const billingToggleButtons = document.querySelectorAll('[data-billing]');
 billingToggleButtons.forEach((button) => {
   button.addEventListener('click', () => {
