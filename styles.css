@@ -183,7 +183,7 @@
 .hero-image-wrap:after{background:linear-gradient(90deg,#101214 0%,rgba(16,18,20,.88) 20%,rgba(16,18,20,.48) 42%,rgba(16,18,20,.06) 76%),linear-gradient(0deg,rgba(16,18,20,.28),transparent 38%)}
 .hero-image-wrap img{filter:brightness(.89)}
 .hero>.note-one{left:64%;top:72%;width:min(225px,22vw)}
-.hero .note-two{top:29%;right:5%}
+.hero .note-two{top:61%;right:5%}
 .product{position:relative;isolation:isolate;z-index:0;width:100%;max-width:none;min-height:760px;margin:0;padding:112px max(var(--gutter),calc((100% - var(--max))/2 + 40px));display:flex;align-items:center;overflow:hidden}
 .product:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(16,18,20,.42) 0%,rgba(16,18,20,.2) 42%,rgba(16,18,20,.06) 75%,rgba(16,18,20,.14) 100%),linear-gradient(0deg,rgba(16,18,20,.28),transparent 45%)}
 .product-copy{position:relative;z-index:2;width:min(530px,48vw);max-width:530px}
