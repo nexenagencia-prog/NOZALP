@@ -67,3 +67,12 @@ document.querySelectorAll('.plan-select').forEach((button) => {
     document.querySelector('#contato')?.scrollIntoView({ behavior: 'smooth' });
   });
 });
+
+
+// Make the footer return link scroll reliably even when the page is already scrolled.
+document.querySelector('.back-top')?.addEventListener('click', (event) => {
+  event.preventDefault();
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
+  history.replaceState(null, '', location.pathname + location.search + '#topo');
+});
