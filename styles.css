@@ -270,7 +270,7 @@
  #plataforma.product>.product-visual picture{position:absolute!important;inset:0!important;display:block!important;width:100%!important;height:100%!important}
  #plataforma.product>.product-visual img{
   position:absolute!important;inset:0!important;display:block!important;width:100%!important;height:100%!important;min-height:0!important;max-height:none!important;
-  object-fit:cover!important;object-position:center center!important;opacity:1!important;filter:brightness(1.1) saturate(.92)!important
+  object-fit:cover!important;object-position:center center!important;opacity:1!important;filter:brightness(1.38) saturate(1)!important
  }
  #plataforma.product:before{
   background:linear-gradient(180deg,#101214 0%,rgba(16,18,20,.55) 13%,rgba(16,18,20,0) 34%,rgba(16,18,20,0) 70%,#101214 100%)!important
