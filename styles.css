@@ -426,3 +426,8 @@
 @media(max-width:900px){.feedback-portrait{flex-basis:54px;width:54px;height:54px}}
 @media(max-width:700px){.feedback-slides{min-height:138px}.feedback-copy{font-size:10px}.feedback-quote{font-size:12px}.feedback-text{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.feedback-slide{transition:none}}
+
+.feedback-carousel{width:100%;max-width:430px}
+.feedback-author{flex-direction:row}
+@media(max-width:920px){.feedback-carousel{max-width:430px}}
+@media(max-width:700px){.feedback-carousel{max-width:100%}}
