@@ -33,18 +33,9 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
 
 document.querySelector('#year').textContent = new Date().getFullYear();
 
-const form = document.querySelector('#contact-form');
-const message = document.querySelector('#form-message');
-form?.addEventListener('submit', (event) => {
-  event.preventDefault();
-  if (!form.reportValidity()) return;
-  const name = new FormData(form).get('name').trim();
-  message.textContent = `Obrigado, ${name}. Seu interesse foi registrado nesta demonstração.`;
-  form.reset();
-});
 
 
-// Alterna a cobrança e permite levar a escolha do plano ao formulário.
+// Alterna a cobrança exibida nos cards de planos.
 const billingToggleButtons = document.querySelectorAll('[data-billing]');
 billingToggleButtons.forEach((button) => {
   button.addEventListener('click', () => {
@@ -58,15 +49,6 @@ billingToggleButtons.forEach((button) => {
     });
   });
 });
-document.querySelectorAll('.plan-select').forEach((button) => {
-  button.addEventListener('click', () => {
-    document.querySelectorAll('.plan-select').forEach((item) => item.classList.remove('is-selected'));
-    button.classList.add('is-selected');
-    const interest = document.querySelector('#contact-form select[name="interest"]');
-    if (interest) interest.value = button.dataset.plan;
-    document.querySelector('#contato')?.scrollIntoView({ behavior: 'smooth' });
-  });
-});
 
 
 // Make the footer return link scroll reliably even when the page is already scrolled.
@@ -76,3 +58,28 @@ document.querySelector('.back-top')?.addEventListener('click', (event) => {
   window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
   history.replaceState(null, '', location.pathname + location.search + '#topo');
 });
+
+
+// Feedbacks da NOZA: rotação automática, com pausas ao interagir.
+const feedbackCarousel = document.querySelector('.feedback-carousel');
+const feedbackSlides = [...document.querySelectorAll('.feedback-slide')];
+const feedbackCurrent = document.querySelector('#feedback-current');
+let activeFeedback = 0;
+const showFeedback = (index) => {
+  activeFeedback = (index + feedbackSlides.length) % feedbackSlides.length;
+  feedbackSlides.forEach((slide, i) => {
+    const active = i === activeFeedback;
+    slide.classList.toggle('is-active', active);
+    slide.setAttribute('aria-hidden', String(!active));
+  });
+  if (feedbackCurrent) feedbackCurrent.textContent = String(activeFeedback + 1).padStart(2, '0');
+};
+document.querySelector('[data-feedback-prev]')?.addEventListener('click', () => showFeedback(activeFeedback - 1));
+document.querySelector('[data-feedback-next]')?.addEventListener('click', () => showFeedback(activeFeedback + 1));
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  window.setInterval(() => {
+    if (!document.hidden && !feedbackCarousel?.matches(':hover') && !feedbackCarousel?.contains(document.activeElement)) {
+      showFeedback(activeFeedback + 1);
+    }
+  }, 5000);
+}

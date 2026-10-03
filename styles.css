@@ -375,3 +375,35 @@
   left:calc(max(var(--gutter),(100vw - var(--max))/2 + 40px) - max(0px,(100vw - var(--max))/2) - var(--gutter) + clamp(-96px,-5vw,-36px) + 8px)
  }
 }
+
+
+/* Carrossel de feedbacks reaproveitando a experiência visual da tela de login */
+.feedback-section{position:relative;overflow:hidden;padding:92px var(--gutter);border-top:1px solid var(--line);background:radial-gradient(ellipse at 17% 48%,rgba(107,126,138,.12),transparent 48%),linear-gradient(115deg,#111315,#141719 55%,#101214)}
+.feedback-wrap{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(48px,8vw,112px);align-items:center}
+.feedback-heading{max-width:470px}
+.feedback-heading h2{font:400 clamp(40px,4.8vw,62px)/1.08 Manrope,sans-serif;letter-spacing:-.055em;margin:0}
+.feedback-heading>p:last-child{max-width:420px;color:#a7adb1;font-size:15px;line-height:1.75;margin:22px 0 0}
+.feedback-carousel{min-width:0;padding:clamp(22px,3vw,36px);border:1px solid rgba(255,255,255,.13);border-radius:18px;background:linear-gradient(145deg,rgba(35,39,42,.94),rgba(20,23,25,.96));box-shadow:0 26px 80px rgba(0,0,0,.25)}
+.feedback-slides{display:grid;min-height:260px}
+.feedback-slide{grid-area:1/1;display:flex;align-items:center;gap:clamp(22px,3vw,38px);opacity:0;visibility:hidden;transition:opacity .45s ease,visibility .45s;pointer-events:none}
+.feedback-slide.is-active{opacity:1;visibility:visible;pointer-events:auto}
+.feedback-portrait{flex:0 0 142px;width:142px;height:142px;border:1px solid rgba(255,255,255,.17);border-radius:18px;background-image:url('https://noza-silk.vercel.app/human-pro-portraits.png');background-size:400% 200%;background-position:var(--portrait-position);box-shadow:0 14px 42px rgba(0,0,0,.25)}
+.feedback-content{min-width:0}
+.feedback-kicker{margin:0 0 18px;color:#8f9ba2;font-size:10px;letter-spacing:.2em}
+.feedback-content blockquote{display:grid;gap:12px;margin:0}
+.feedback-content blockquote strong{font:400 clamp(22px,2.4vw,32px)/1.2 Manrope,sans-serif;letter-spacing:-.035em;color:#f2f4f5}
+.feedback-content blockquote span{color:#aeb4b8;font-size:14px;line-height:1.7}
+.feedback-author{display:flex;flex-direction:column;gap:2px;margin-top:25px;padding-top:17px;border-top:1px solid rgba(255,255,255,.1)}
+.feedback-author strong{font-size:13px;font-weight:500;color:#e8ebed}
+.feedback-author span{font-size:11px;color:#798188}
+.feedback-controls{display:flex;align-items:center;justify-content:space-between;margin-top:22px;padding-top:16px;border-top:1px solid rgba(255,255,255,.09)}
+.feedback-count{color:#7d858b;font-size:11px;letter-spacing:.1em}
+.feedback-count span{color:#e0e4e6}
+.feedback-buttons{display:flex;gap:8px}
+.feedback-buttons button{min-height:38px;padding:0 13px;border:1px solid rgba(255,255,255,.15);border-radius:999px;background:rgba(255,255,255,.025);color:#dfe3e5;font-size:11px;cursor:pointer;transition:background .2s,border-color .2s}
+.feedback-buttons button:hover,.feedback-buttons button:focus-visible{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.34)}
+.feedback-buttons button:focus-visible{outline:2px solid #c7d1d7;outline-offset:3px}
+@media(max-width:920px){.feedback-wrap{grid-template-columns:1fr;gap:36px}.feedback-heading{max-width:640px}.feedback-heading h2{max-width:600px}}
+@media(max-width:700px){.feedback-section{padding:68px var(--gutter) 72px}.feedback-wrap{gap:28px}.feedback-heading h2{font-size:clamp(38px,10vw,52px)}.feedback-heading>p:last-child{font-size:14px}.feedback-carousel{padding:21px 18px;border-radius:15px}.feedback-slides{min-height:280px}.feedback-slide{align-items:flex-start;flex-direction:column;gap:16px}.feedback-portrait{flex-basis:72px;width:72px;height:72px;border-radius:12px}.feedback-kicker{margin-bottom:10px}.feedback-content blockquote strong{font-size:24px}.feedback-content blockquote span{font-size:13px}.feedback-author{margin-top:17px;padding-top:12px}.feedback-controls{margin-top:18px;padding-top:13px}.feedback-buttons button{min-height:36px}}
+@media(max-width:380px){.feedback-controls{align-items:flex-start;flex-direction:column;gap:12px}.feedback-buttons{width:100%}.feedback-buttons button{flex:1}}
+@media(prefers-reduced-motion:reduce){.feedback-slide{transition:none}}
