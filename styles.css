@@ -431,3 +431,5 @@
 .feedback-author{flex-direction:row}
 @media(max-width:920px){.feedback-carousel{max-width:430px}}
 @media(max-width:700px){.feedback-carousel{max-width:100%}}
+
+.feedback-carousel{justify-self:center}
