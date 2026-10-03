@@ -63,7 +63,6 @@ document.querySelector('.back-top')?.addEventListener('click', (event) => {
 // Feedbacks da NOZA: rotação automática, com pausas ao interagir.
 const feedbackCarousel = document.querySelector('.feedback-carousel');
 const feedbackSlides = [...document.querySelectorAll('.feedback-slide')];
-const feedbackCurrent = document.querySelector('#feedback-current');
 let activeFeedback = 0;
 const showFeedback = (index) => {
   activeFeedback = (index + feedbackSlides.length) % feedbackSlides.length;
@@ -72,10 +71,7 @@ const showFeedback = (index) => {
     slide.classList.toggle('is-active', active);
     slide.setAttribute('aria-hidden', String(!active));
   });
-  if (feedbackCurrent) feedbackCurrent.textContent = String(activeFeedback + 1).padStart(2, '0');
 };
-document.querySelector('[data-feedback-prev]')?.addEventListener('click', () => showFeedback(activeFeedback - 1));
-document.querySelector('[data-feedback-next]')?.addEventListener('click', () => showFeedback(activeFeedback + 1));
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   window.setInterval(() => {
     if (!document.hidden && !feedbackCarousel?.matches(':hover') && !feedbackCarousel?.contains(document.activeElement)) {
