@@ -37,7 +37,7 @@
 .business-capacity{color:#d9dbda;font-size:13px;font-weight:600}
 .plan-list{list-style:none;padding:13px 0 0;margin:0;border-top:1px solid #34383b;display:grid;gap:8px}
 .plan-list li{position:relative;padding-left:25px;color:#c0c4c6;font-size:11px;line-height:1.4}
-.plan-list li:before{content:"✓";position:absolute;left:0;top:0;width:16px;height:16px;display:grid;place-items:center;border:1px solid #555b5f;border-radius:50%;color:#dfe1e0;font-size:9px}
+.plan-list li:before{content:"";position:absolute;left:0;top:0;width:16px;height:16px;border:1px solid #555b5f;border-radius:50%}.plan-list li:after{content:"";position:absolute;left:6px;top:3px;width:4px;height:7px;border:solid #dfe1e0;border-width:0 1.5px 1.5px 0;transform:rotate(45deg)}
 .price-card-action{margin-top:auto;padding-top:20px}
 .price-card-action .button{width:100%;min-height:50px;border-radius:9px;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
 .price-card-action p{margin:9px 2px 0;text-align:center;color:#858b8f;font-size:9px;line-height:1.5}
@@ -433,3 +433,17 @@
 @media(max-width:700px){.feedback-carousel{max-width:100%}}
 
 .feedback-carousel{justify-self:center}
+
+/* Ícones vetoriais de interface da NOZA. */
+.ui-icon{display:inline-block;width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle}
+.nav-cta .ui-icon{width:14px;height:14px;color:var(--blue)}
+.button-primary .ui-icon,.button-outline .ui-icon{width:16px;height:16px}
+.text-link .ui-icon{color:#9eafba}
+.benefit-card a .ui-icon{margin-left:8px;color:inherit}
+.back-top{display:inline-flex;align-items:center;gap:8px}
+.mini-icon{display:inline-flex;align-items:center;justify-content:center}
+.mini-icon .ui-icon{width:25px;height:25px}
+.play-icon .ui-icon{width:10px;height:10px;fill:currentColor;stroke:none}
+.benefit-icon .ui-icon{width:21px;height:21px}
+.plan-symbol .ui-icon{width:20px;height:20px}
+.plan-quota span .ui-icon{width:12px;height:12px;margin-right:4px;stroke-width:1.9}
