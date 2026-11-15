@@ -447,3 +447,18 @@
 .benefit-icon .ui-icon{width:21px;height:21px}
 .plan-symbol .ui-icon{width:20px;height:20px}
 .plan-quota span .ui-icon{width:12px;height:12px;margin-right:4px;stroke-width:1.9}
+
+
+/* Controles integrados ao card Business existente. */
+.business-customizer{margin:0 0 22px;color:inherit}
+.business-customizer>p{font-size:12px;line-height:1.6}
+.business-addon{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:12px 0;font-size:12px}
+.business-addon>span{min-width:0}
+.business-addon small{display:block;color:#a7adb1;font-size:11px;line-height:1.5}
+.business-stepper{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.business-stepper button{width:44px;height:44px;border:1px solid var(--line);border-radius:8px;background:transparent;color:inherit;font:inherit;font-size:18px;cursor:pointer}
+.business-stepper button:disabled{opacity:.35;cursor:default}
+.business-stepper button:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.business-stepper output{min-width:24px;text-align:center;font-variant-numeric:tabular-nums}
+#business-summary{color:#a7adb1;font-variant-numeric:tabular-nums}
+@media(max-width:380px){.business-addon{flex-wrap:wrap}}

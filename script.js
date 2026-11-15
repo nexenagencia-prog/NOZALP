@@ -79,3 +79,30 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     }
   }, 5000);
 }
+
+
+const businessExtras = { hours: 0, guests: 0 };
+function updateBusinessPlan() {
+  const card = document.querySelector('#business-plan');
+  if (!card) return;
+  const annual = document.querySelector('[data-billing="annual"]').getAttribute('aria-pressed') === 'true';
+  const base = 19900;
+  const extra = (businessExtras.hours + businessExtras.guests) * 990;
+  const money = cents => (cents / 100).toLocaleString('pt-BR', {style:'currency',currency:'BRL'});
+  card.querySelector('.plan-price strong').textContent = ((base + extra) / 100).toLocaleString('pt-BR', {minimumFractionDigits:2,maximumFractionDigits:2});
+  document.querySelector('#business-hours').textContent = businessExtras.hours + 'h';
+  document.querySelector('#business-guests').textContent = businessExtras.guests;
+  const capacity = (10 + businessExtras.hours) + 'h/mês · até ' + (5 + businessExtras.guests) + ' convidados';
+  document.querySelector('#business-quota').textContent = capacity + ' por reunião';
+  document.querySelector('#business-summary').textContent = capacity + ' · ' + money(base + extra) + '/mês' + (annual ? ' · base anual: ' + money(base * 12) + '; adicionais: ' + money(extra) + '/mês' : '');
+  card.querySelectorAll('[data-step="-1"]').forEach(button => {button.disabled = businessExtras[button.dataset.addon] === 0;});
+}
+document.querySelectorAll('[data-addon]').forEach(button => {
+  button.addEventListener('click', () => {
+    const key = button.dataset.addon;
+    businessExtras[key] = Math.max(0, businessExtras[key] + Number(button.dataset.step));
+    updateBusinessPlan();
+  });
+});
+document.querySelectorAll('[data-billing]').forEach(button => button.addEventListener('click', updateBusinessPlan));
+updateBusinessPlan();
