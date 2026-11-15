@@ -106,3 +106,11 @@ document.querySelectorAll('[data-addon]').forEach(button => {
 });
 document.querySelectorAll('[data-billing]').forEach(button => button.addEventListener('click', updateBusinessPlan));
 updateBusinessPlan();
+
+// Mantém a personalização na landing page, inclusive pelo teclado.
+document.querySelector('#business-plan .plan-select')?.addEventListener('click', (event) => {
+  event.preventDefault();
+  const customizer = document.querySelector('#business-customizer');
+  customizer?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
+  customizer?.querySelector('[data-addon="hours"][data-step="1"]')?.focus({ preventScroll: true });
+});
