@@ -554,3 +554,87 @@
  .hero h1{font-size:clamp(43px,6vw,62px)!important}
  .hero-points{margin-top:26px!important}
 }
+
+
+/* Tablet retrato: imagem completa em área própria, sem texto sobre a fotografia. */
+@media (min-width:701px) and (max-width:1100px) and (orientation:portrait){
+ #hero.hero{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  justify-content:flex-start!important;
+  height:auto!important;
+  min-height:0!important;
+  padding:clamp(46px,6vw,70px) clamp(30px,5vw,60px) 64px!important;
+  overflow:hidden!important;
+  background:#101214!important;
+ }
+ #hero .hero-copy{
+  position:relative!important;
+  order:1!important;
+  left:auto!important;
+  top:auto!important;
+  width:100%!important;
+  max-width:760px!important;
+  margin:0 auto!important;
+  padding:0!important;
+  z-index:2!important;
+ }
+ #hero .hero h1,#hero h1{max-width:700px!important}
+ #hero .hero-media{
+  position:relative!important;
+  order:2!important;
+  inset:auto!important;
+  width:100%!important;
+  max-width:760px!important;
+  height:auto!important;
+  min-height:0!important;
+  margin:34px auto 0!important;
+  display:block!important;
+  pointer-events:none!important;
+  z-index:1!important;
+ }
+ #hero .hero-image-wrap{
+  position:relative!important;
+  inset:auto!important;
+  width:100%!important;
+  height:auto!important;
+  aspect-ratio:16/9!important;
+  overflow:visible!important;
+  mask-image:none!important;
+  -webkit-mask-image:none!important;
+  border-radius:12px!important;
+ }
+ #hero .hero-image-wrap picture{
+  position:relative!important;
+  inset:auto!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  overflow:visible!important;
+ }
+ #hero .hero-image-wrap picture img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  filter:none!important;
+ }
+ #hero .hero-image-wrap:after{content:none!important;display:none!important}
+ #hero .hero-glow{display:none!important}
+ #hero>.note-one,#hero .note-two{display:none!important}
+ #hero .hero-bottom{
+  position:relative!important;
+  order:3!important;
+  left:auto!important;
+  right:auto!important;
+  bottom:auto!important;
+  width:100%!important;
+  max-width:760px!important;
+  margin:25px auto 0!important;
+  padding:0!important;
+  z-index:2!important;
+ }
+}
