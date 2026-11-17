@@ -19,7 +19,7 @@
 .billing-toggle button{min-width:124px;border:0;border-radius:9px;padding:10px 14px;background:transparent;color:#a5aaae;font-size:12px;cursor:pointer}
 .billing-toggle button[aria-pressed=true]{background:#e6e7e5;color:#17191b;font-weight:700}
 .billing-toggle button span{font-size:9px;padding:3px 5px;margin-left:5px;border-radius:4px;background:#cfd2d2;color:#242729}
-.pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:stretch}
+.pricing-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;align-items:stretch}
 .price-card{display:flex;flex-direction:column;padding:22px;border:1px solid #303438;border-radius:16px;background:linear-gradient(150deg,#202326,#151719 76%);min-height:640px}
 .price-card-featured{border-color:#666d72;box-shadow:0 16px 55px rgba(0,0,0,.2)}
 .price-card-top{height:42px;display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px}
