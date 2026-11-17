@@ -87,7 +87,7 @@ function updateBusinessPlan() {
   if (!card) return;
   const annual = document.querySelector('[data-billing="annual"]').getAttribute('aria-pressed') === 'true';
   const base = 19900;
-  const extra = businessExtras.hours * 1590 + businessExtras.guests * 990;
+  const extra = businessExtras.hours * 1590 + businessExtras.guests * 1590;
   const money = cents => (cents / 100).toLocaleString('pt-BR', {style:'currency',currency:'BRL'});
   card.querySelector('.plan-price strong').textContent = ((base + extra) / 100).toLocaleString('pt-BR', {minimumFractionDigits:2,maximumFractionDigits:2});
   document.querySelector('#business-hours').textContent = businessExtras.hours + 'h';
