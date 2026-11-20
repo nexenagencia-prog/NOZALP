@@ -178,14 +178,14 @@
             <a class="text-link" href="https://noza-silk.vercel.app/skills-reuniao">Conhecer My Performance <svg class="ui-icon icon-arrow-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5l7 7-7 7"/></svg></a>
           </div>
           <div class="scores-demo-panel">
-            <div class="scores-demo-toolbar"><span><span class="scores-demo-dot"></span> Exemplo interativo de performance</span><span>Dados ilustrativos</span></div>
+            <div class="scores-demo-toolbar"><span><span class="scores-demo-dot"></span> Demonstração automática de performance</span><span>Dados ilustrativos</span></div>
             <div class="scores-demo-overview">
-              <div class="scores-demo-overview-copy"><span class="scores-demo-eyebrow">SKILLS / EVOLUÇÃO</span><h3>Seu desempenho ganha contexto.</h3><p>Selecione uma Skill para ver o score e o feedback da IA. Ajuste o progresso da simulação para entender como os resultados podem evoluir.</p><label for="scores-demo-progress">Simular evolução <output id="scores-demo-progress-value" for="scores-demo-progress">0%</output></label><input id="scores-demo-progress" type="range" min="0" max="100" step="1" value="0" aria-label="Simular progresso dos scores de zero até os valores de exemplo"/></div>
+              <div class="scores-demo-overview-copy"><span class="scores-demo-eyebrow">SKILLS / EVOLUÇÃO</span><h3>Seu desempenho ganha contexto.</h3><p>Os scores evoluem automaticamente de zero até a pontuação ilustrativa. Toque em cada Skill para entender o resultado, o que faltou para chegar a 100 e como melhorar.</p><div class="scores-demo-auto"><span class="scores-demo-live-dot"></span><span id="scores-demo-animation-status">Calculando scores de exemplo...</span><button type="button" id="scores-demo-replay" aria-label="Reproduzir novamente a animação dos scores">Reproduzir animação ↻</button></div></div>
               <div class="scores-demo-ring-wrap"><div class="scores-demo-ring" id="scores-demo-ring" style="--score:0"><div><strong id="scores-demo-total">0</strong><span>/100</span></div></div><p>Score geral ilustrativo</p></div>
             </div>
             <div class="scores-demo-skills" id="scores-demo-skills" aria-label="Selecionar uma Skill para visualizar o feedback">
               <button type="button" class="scores-demo-skill is-active" data-skill="0" aria-pressed="true"><span>Comunicação</span><strong>0%</strong><i><b style="width:0%"></b></i></button>
-              <button type="button" class="scores-demo-skill" data-skill="1" aria-pressed="false"><span>Clareza</span><strong>0%</strong><i><b style="width:0%"></b></i></button>
+              <button type="button" class="scores-demo-skill" data-skill="1" aria-pressed="false"><span>Oratória</span><strong>0%</strong><i><b style="width:0%"></b></i></button>
               <button type="button" class="scores-demo-skill" data-skill="2" aria-pressed="false"><span>Escuta</span><strong>0%</strong><i><b style="width:0%"></b></i></button>
               <button type="button" class="scores-demo-skill" data-skill="3" aria-pressed="false"><span>Objetividade</span><strong>0%</strong><i><b style="width:0%"></b></i></button>
               <button type="button" class="scores-demo-skill" data-skill="4" aria-pressed="false"><span>Perguntas</span><strong>0%</strong><i><b style="width:0%"></b></i></button>
@@ -193,8 +193,8 @@
               <button type="button" class="scores-demo-skill" data-skill="6" aria-pressed="false"><span>Condução</span><strong>0%</strong><i><b style="width:0%"></b></i></button>
             </div>
             <div class="scores-demo-feedback" aria-live="polite">
-              <article><span class="scores-demo-feedback-label">DIAGNÓSTICO DA IA</span><h4 id="scores-demo-feedback-title">Comunicação</h4><p id="scores-demo-feedback-text">Inicie a simulação para visualizar um exemplo de feedback de comunicação.</p></article>
-              <article><span class="scores-demo-feedback-label">PRÓXIMO PASSO</span><h4>Como evoluir nesta Skill</h4><p id="scores-demo-next">Ajuste o progresso para ver como a IA pode indicar uma ação prática para desenvolver esta competência.</p></article>
+              <article><span class="scores-demo-feedback-label">POR QUE ESSA PONTUAÇÃO?</span><h4 id="scores-demo-feedback-title">Comunicação</h4><p id="scores-demo-feedback-text">Aguarde a animação ou selecione uma Skill para visualizar a análise.</p><p class="scores-demo-gap" id="scores-demo-gap"></p></article>
+              <article><span class="scores-demo-feedback-label">COMO CHEGAR MAIS PERTO DE 100?</span><h4>Como evoluir nesta Skill</h4><p id="scores-demo-next">A IA destaca uma ação prática para desenvolver esta competência.</p></article>
             </div>
             <p class="scores-demo-disclaimer">Demonstração ilustrativa. Os scores reais dependem da calibragem e das reuniões analisadas na plataforma.</p>
           </div>
