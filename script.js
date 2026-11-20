@@ -114,3 +114,36 @@ document.querySelector('#business-plan .plan-select')?.addEventListener('click',
   customizer?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
   customizer?.querySelector('[data-addon="hours"][data-step="1"]')?.focus({ preventScroll: true });
 });
+
+// Demonstração de scores na landing page. Dados fictícios, sem conexão com conta ou reuniões reais.
+(() => {
+  const root = document.querySelector('#scores-performance');
+  if (!root) return;
+  const slider = root.querySelector('#scores-demo-progress');
+  const buttons = [...root.querySelectorAll('[data-skill]')];
+  const examples = [
+    {name:'Comunicação',score:59,feedback:'Sua mensagem apresenta uma estrutura compreensível. Em alguns momentos, explicações longas podem reduzir a clareza do ponto central.',next:'Comece pela ideia principal, confirme se ela foi compreendida e só depois aprofunde os detalhes.'},
+    {name:'Clareza',score:59,feedback:'A intenção da fala está bem definida, mas termos genéricos podem abrir espaço para interpretações diferentes.',next:'Use exemplos concretos e encerre cada explicação com uma conclusão objetiva.'},
+    {name:'Escuta',score:56,feedback:'Você acolhe parte das respostas, mas pode explorar melhor o contexto antes de apresentar sua solução.',next:'Faça uma pergunta de aprofundamento e resuma o que ouviu antes de argumentar.'},
+    {name:'Objetividade',score:64,feedback:'Sua condução tende a manter o foco, embora alguns argumentos possam ser mais curtos e diretos.',next:'Defina o objetivo da fala e apresente um único argumento por vez.'},
+    {name:'Perguntas',score:58,feedback:'As perguntas ajudam a conduzir a conversa, mas algumas podem investigar melhor os critérios de decisão.',next:'Experimente perguntar quais condições precisam ser atendidas para avançar.'},
+    {name:'Argumentação',score:52,feedback:'Os argumentos mostram benefícios, mas podem se conectar melhor às prioridades declaradas pelo interlocutor.',next:'Relacione cada benefício a uma necessidade mencionada durante a reunião.'},
+    {name:'Condução',score:61,feedback:'Você mantém uma sequência de conversa consistente, mas pode tornar os próximos passos mais explícitos.',next:'Ao encerrar um tópico, confirme o acordo e indique a próxima ação com clareza.'}
+  ];
+  let selected=0;
+  function update(){
+    const progress=Number(slider.value)/100;
+    const scores=examples.map(x=>Math.round(x.score*progress));
+    const average=Math.round(scores.reduce((a,b)=>a+b,0)/scores.length);
+    root.querySelector('#scores-demo-total').textContent=average;
+    root.querySelector('#scores-demo-ring').style.setProperty('--score',average);
+    root.querySelector('#scores-demo-progress-value').textContent=slider.value+'%';
+    buttons.forEach((btn,i)=>{btn.querySelector('strong').textContent=scores[i]+'%';btn.querySelector('i b').style.width=scores[i]+'%';btn.classList.toggle('is-active',i===selected);btn.setAttribute('aria-pressed',String(i===selected));});
+    root.querySelector('#scores-demo-feedback-title').textContent=examples[selected].name+' · '+scores[selected]+'/100';
+    root.querySelector('#scores-demo-feedback-text').textContent=progress===0?'Este é o ponto inicial da simulação. Avance o controle para visualizar um diagnóstico ilustrativo desta Skill.':examples[selected].feedback;
+    root.querySelector('#scores-demo-next').textContent=progress===0?'Ajuste o progresso para visualizar uma ação prática de desenvolvimento.':examples[selected].next;
+  }
+  slider.addEventListener('input',update);
+  buttons.forEach((btn,i)=>btn.addEventListener('click',()=>{selected=i;update();}));
+  update();
+})();
