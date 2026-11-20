@@ -673,3 +673,6 @@
 
 /* Feedback editorial e prévia de relatório completo */
 .scores-demo-feedback-title-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}.scores-demo-feedback-title-row h4{margin:13px 0}.scores-demo-full-feedback{display:inline-flex;align-items:center;gap:7px;padding:9px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.19);background:rgba(255,255,255,.045);color:#aebdc5;font:500 10px Manrope,sans-serif;cursor:default;opacity:.82}.scores-demo-full-feedback span{font-size:14px}.scores-demo-feedback .scores-demo-gap{margin-top:14px}.scores-demo-feedback article p{line-height:1.85}
+
+/* Botão de demonstração em branco com contraste alto */
+.scores-demo-full-feedback,.scores-demo-full-feedback:disabled{background:#f6f7f8!important;color:#101418!important;border:1px solid #fff!important;opacity:1!important;font-weight:700!important;font-size:11px!important;padding:11px 15px!important;box-shadow:0 4px 18px rgba(255,255,255,.10)}.scores-demo-feedback-label{color:#c6d7df!important;font-weight:700!important}.scores-demo-feedback article p{color:#d1dce1!important;font-size:13px!important;line-height:1.85!important}.scores-demo-feedback .scores-demo-gap{border-left:2px solid #a5c1ce;padding-left:14px;color:#e2e9ed!important}.scores-demo-feedback article{background:rgba(255,255,255,.035)}
