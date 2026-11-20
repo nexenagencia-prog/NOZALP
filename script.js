@@ -115,35 +115,61 @@ document.querySelector('#business-plan .plan-select')?.addEventListener('click',
   customizer?.querySelector('[data-addon="hours"][data-step="1"]')?.focus({ preventScroll: true });
 });
 
-// Demonstração de scores na landing page. Dados fictícios, sem conexão com conta ou reuniões reais.
+// Scores demonstrativos com animação automática. Não são dados reais de usuários.
 (() => {
-  const root = document.querySelector('#scores-performance');
-  if (!root) return;
-  const slider = root.querySelector('#scores-demo-progress');
-  const buttons = [...root.querySelectorAll('[data-skill]')];
-  const examples = [
-    {name:'Comunicação',score:59,feedback:'Sua mensagem apresenta uma estrutura compreensível. Em alguns momentos, explicações longas podem reduzir a clareza do ponto central.',next:'Comece pela ideia principal, confirme se ela foi compreendida e só depois aprofunde os detalhes.'},
-    {name:'Clareza',score:59,feedback:'A intenção da fala está bem definida, mas termos genéricos podem abrir espaço para interpretações diferentes.',next:'Use exemplos concretos e encerre cada explicação com uma conclusão objetiva.'},
-    {name:'Escuta',score:56,feedback:'Você acolhe parte das respostas, mas pode explorar melhor o contexto antes de apresentar sua solução.',next:'Faça uma pergunta de aprofundamento e resuma o que ouviu antes de argumentar.'},
-    {name:'Objetividade',score:64,feedback:'Sua condução tende a manter o foco, embora alguns argumentos possam ser mais curtos e diretos.',next:'Defina o objetivo da fala e apresente um único argumento por vez.'},
-    {name:'Perguntas',score:58,feedback:'As perguntas ajudam a conduzir a conversa, mas algumas podem investigar melhor os critérios de decisão.',next:'Experimente perguntar quais condições precisam ser atendidas para avançar.'},
-    {name:'Argumentação',score:52,feedback:'Os argumentos mostram benefícios, mas podem se conectar melhor às prioridades declaradas pelo interlocutor.',next:'Relacione cada benefício a uma necessidade mencionada durante a reunião.'},
-    {name:'Condução',score:61,feedback:'Você mantém uma sequência de conversa consistente, mas pode tornar os próximos passos mais explícitos.',next:'Ao encerrar um tópico, confirme o acordo e indique a próxima ação com clareza.'}
+  const root=document.querySelector('#scores-performance');
+  if(!root) return;
+  const buttons=[...root.querySelectorAll('[data-skill]')];
+  const examples=[
+    {name:'Comunicação',score:76,good:'Você apresentou o objetivo da conversa com clareza e conectou os principais argumentos ao contexto.',gap:'Faltaram pausas para confirmar a compreensão e algumas explicações ficaram longas. Esses pontos impedem um resultado próximo de 100.',next:'Resuma a ideia central em uma frase, faça uma pausa e pergunte se o interlocutor deseja aprofundar.'},
+    {name:'Oratória',score:70,good:'Você manteve um ritmo compreensível, articulou as ideias principais e demonstrou segurança na maior parte da apresentação.',gap:'Por que 70 e não 100? Houve variações de ritmo, poucas pausas estratégicas e momentos em que a mensagem perdeu ênfase. Isso reduziu o impacto e a retenção dos argumentos.',next:'Pratique pausas após ideias importantes, varie a entonação e encerre cada argumento com uma conclusão objetiva.'},
+    {name:'Escuta',score:68,good:'Você ouviu as respostas e retomou alguns pontos relevantes durante a conversa.',gap:'Em momentos importantes, apresentou a solução antes de explorar completamente as necessidades. Faltaram perguntas de aprofundamento.',next:'Reformule o que ouviu e faça uma pergunta adicional antes de propor uma solução.'},
+    {name:'Objetividade',score:82,good:'Você manteve o foco e apresentou argumentos diretos na maior parte da reunião.',gap:'Algumas respostas repetiram informações já explicadas. A redução dessas repetições aumentaria a precisão.',next:'Apresente um ponto por vez e conclua cada tópico com uma ação ou decisão clara.'},
+    {name:'Perguntas',score:64,good:'Você fez perguntas relevantes para compreender o cenário inicial.',gap:'Faltaram perguntas sobre critérios de decisão, prioridades e possíveis obstáculos. Por isso o diagnóstico não chega a 100.',next:'Pergunte quais condições precisam ser atendidas para que o interlocutor avance.'},
+    {name:'Argumentação',score:73,good:'Você apresentou benefícios concretos e sustentou sua proposta com exemplos.',gap:'Parte dos argumentos não foi conectada diretamente às preocupações manifestadas pelo interlocutor.',next:'Antes de defender um benefício, relacione-o a uma necessidade que a outra pessoa tenha mencionado.'},
+    {name:'Condução',score:79,good:'Você organizou a conversa e manteve uma sequência lógica de assuntos.',gap:'O fechamento deixou próximos passos sem responsáveis ou prazos claramente definidos.',next:'Finalize cada reunião confirmando quem fará o quê e quando.'}
   ];
-  let selected=0;
-  function update(){
-    const progress=Number(slider.value)/100;
+  let selected=1,progress=0,raf=0,started=false,startTime=0;
+  const duration=3800;
+  const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function render(){
     const scores=examples.map(x=>Math.round(x.score*progress));
-    const average=Math.round(scores.reduce((a,b)=>a+b,0)/scores.length);
-    root.querySelector('#scores-demo-total').textContent=average;
-    root.querySelector('#scores-demo-ring').style.setProperty('--score',average);
-    root.querySelector('#scores-demo-progress-value').textContent=slider.value+'%';
-    buttons.forEach((btn,i)=>{btn.querySelector('strong').textContent=scores[i]+'%';btn.querySelector('i b').style.width=scores[i]+'%';btn.classList.toggle('is-active',i===selected);btn.setAttribute('aria-pressed',String(i===selected));});
-    root.querySelector('#scores-demo-feedback-title').textContent=examples[selected].name+' · '+scores[selected]+'/100';
-    root.querySelector('#scores-demo-feedback-text').textContent=progress===0?'Este é o ponto inicial da simulação. Avance o controle para visualizar um diagnóstico ilustrativo desta Skill.':examples[selected].feedback;
-    root.querySelector('#scores-demo-next').textContent=progress===0?'Ajuste o progresso para visualizar uma ação prática de desenvolvimento.':examples[selected].next;
+    const avg=Math.round(scores.reduce((a,b)=>a+b,0)/scores.length);
+    root.querySelector('#scores-demo-total').textContent=avg;
+    root.querySelector('#scores-demo-ring').style.setProperty('--score',avg);
+    buttons.forEach((btn,i)=>{
+      btn.querySelector('strong').textContent=scores[i]+'%';
+      btn.querySelector('i b').style.width=scores[i]+'%';
+      btn.classList.toggle('is-active',i===selected);
+      btn.setAttribute('aria-pressed',String(i===selected));
+    });
+    const skill=examples[selected];
+    root.querySelector('#scores-demo-feedback-title').textContent=skill.name+' · '+scores[selected]+'/100';
+    root.querySelector('#scores-demo-feedback-text').textContent=skill.good;
+    root.querySelector('#scores-demo-gap').textContent=skill.gap;
+    root.querySelector('#scores-demo-next').textContent=skill.next;
+    root.querySelector('#scores-demo-animation-status').textContent=progress>=1?'Diagnóstico ilustrativo concluído':'Analisando competências...';
   }
-  slider.addEventListener('input',update);
-  buttons.forEach((btn,i)=>btn.addEventListener('click',()=>{selected=i;update();}));
-  update();
+  function tick(now){
+    if(!startTime)startTime=now;
+    const t=Math.min(1,(now-startTime)/duration);
+    progress=1-Math.pow(1-t,3);
+    render();
+    if(t<1)raf=requestAnimationFrame(tick);else{progress=1;render();raf=0;}
+  }
+  function play(){
+    cancelAnimationFrame(raf);raf=0;startTime=0;progress=0;render();
+    if(reduceMotion){progress=1;render();return;}
+    raf=requestAnimationFrame(tick);
+  }
+  buttons.forEach((btn,i)=>btn.addEventListener('click',()=>{selected=i;render();}));
+  root.querySelector('#scores-demo-replay').addEventListener('click',play);
+  render();
+  if('IntersectionObserver' in window){
+    const observer=new IntersectionObserver(entries=>{
+      if(entries.some(entry=>entry.isIntersecting)&&!started){started=true;play();observer.disconnect();}
+    },{threshold:0.18});
+    observer.observe(root.querySelector('.scores-demo-panel'));
+  }else{play();}
+  document.addEventListener('visibilitychange',()=>{if(document.hidden&&raf){cancelAnimationFrame(raf);raf=0;}else if(!document.hidden&&started&&progress<1)play();});
 })();
