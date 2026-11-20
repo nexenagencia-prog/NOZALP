@@ -638,3 +638,6 @@
   z-index:2!important;
  }
 }
+
+/* Competências personalizadas na seção de skills. */
+.skill-tags{display:flex;flex-wrap:wrap;gap:9px;margin:23px 0 20px;max-width:590px}.skill-tags span{font-size:11px;line-height:1.35;padding:9px 12px;border:1px solid rgba(220,230,236,.24);border-radius:999px;background:rgba(255,255,255,.045);color:#dce2e5}.professionals-copy .skills-disclaimer{font-size:11px;line-height:1.6;color:#8e989f;max-width:520px;margin:0 0 20px}@media(max-width:700px){.skill-tags{gap:7px}.skill-tags span{font-size:10px;padding:8px 10px}}
